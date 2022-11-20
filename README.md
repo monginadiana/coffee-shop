@@ -102,4 +102,94 @@ You can also update your npm version with:
 npm i -g npm
 ```
 
+### Sign Up for a [Heroku Account][heroku signup]
+
+You can sign up at for a free account at
+[https://signup.heroku.com/devcenter][heroku signup].
+
+### Download the [Heroku CLI][heroku cli] Application
+
+Download the Heroku CLI. For OSX users, you can use Homebrew:
+
+```sh
+brew tap heroku/brew && brew install heroku
+```
+
+For WSL users, run this command in the Ubuntu terminal:
+
+```sh
+curl https://cli-assets.heroku.com/install.sh | sh
+```
+
+If you run into issues installing, check out the [Heroku CLI][heroku cli]
+downloads page for more options.
+
+After downloading, you can login via the CLI in the terminal:
+
+```sh
+heroku login
+```
+
+This will open a browser window to log you into your Heroku account. After
+logging in, close the browser window and return to the terminal. You can run
+`heroku whoami` in the terminal to verify that you have logged in successfully.
+
+[heroku signup]: https://signup.heroku.com/devcenter
+[heroku cli]: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+
+### Install Postgresql
+
+Heroku requires that you use PostgreSQL for your database instead of SQLite.
+PostgreSQL (or just Postgres for short) is an advanced database management
+system with more features than SQLite. If you don't already have it installed,
+you'll need to set it up.
+
+#### PostgreSQL Installation for WSL
+
+To install Postgres for WSL, run the following commands from your Ubuntu terminal:
+
+```sh
+sudo apt update
+sudo apt install postgresql postgresql-contrib libpq-dev
+```
+
+Then confirm that Postgres was installed successfully:
+
+```sh
+psql --version
+```
+
+Run this command to start the Postgres service:
+
+```sh
+sudo service postgresql start
+```
+
+Finally, you'll also need to create a database user so that you are able to
+connect to the database from Rails. First, check what your operating system
+username is:
+
+```sh
+whoami
+```
+
+If your username is "ian", for example, you'd need to create a Postgres user
+with that same name. To do so, run this command to open the Postgres CLI:
+
+```sh
+sudo -u postgres -i
+```
+
+From the Postgres CLI, run this command (replacing "ian" with your username):
+
+```sh
+createuser -sr ian
+```
+
+Then enter `control + d` or type `logout` to exit.
+
+[This guide][postgresql wsl] has more info on setting up Postgres on WSL if you
+get stuck.
+
+[postgresql wsl]: https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-postgresql
 
