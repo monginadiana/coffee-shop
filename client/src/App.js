@@ -21,11 +21,11 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
-    fetch("/coffees")
+    fetch("https://dees-coffee-shop.herokuapp.com/coffees")
     .then(res => res.json())
     .then(data => setCoffees(data))
 
-    fetch("/me").then((response) => {
+    fetch("https://dees-coffee-shop.herokuapp.com/me").then((response) => {
       if (response.status === 200) {
         response.json().then((user) => {
           setIsAuthenticated(true);
@@ -56,7 +56,7 @@ function App() {
   }
 
   function addCoffee(product){
-    fetch("/coffees", {
+    fetch("https://dees-coffee-shop.herokuapp.com/coffees", {
       method: "POST",
       headers: {
         'content-type': 'application/json',
@@ -81,7 +81,7 @@ function App() {
   }
 
   function editProduct(product, id){
-    fetch(`/coffees/${id}`, {
+    fetch(`https://dees-coffee-shop.herokuapp.com/coffees/${id}`, {
       method: "PATCH",
       headers: {
         'content-type': 'application/json',
@@ -106,7 +106,7 @@ function App() {
   }
 
   function deleteProduct(product){
-    fetch(`/products/${product.id}`, {
+    fetch(`https://dees-coffee-shop.herokuapp.com/coffees/${product.id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',

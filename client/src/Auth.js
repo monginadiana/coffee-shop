@@ -35,7 +35,7 @@ export default function Auth({getUserData}){
       const onRegisterSubmit = (registerData) => handleUserRegistration(registerData);
 
       function handleUserLogin(loginData){ 
-        fetch("/login", {
+        fetch("https://dees-coffee-shop.herokuapp.com/login", {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -78,7 +78,7 @@ export default function Auth({getUserData}){
 
         function handleUserRegistration(registerData){
             console.log(registerData);
-            fetch("/users", {
+            fetch("https://dees-coffee-shop.herokuapp.com/users", {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
